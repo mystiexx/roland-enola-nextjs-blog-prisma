@@ -1,7 +1,6 @@
-import { Post } from '.prisma/client';
 import prisma from '../../../lib/prisma'
 
-export default async function handle(req: { query: { id: any; }; method: string; }, res: { json: (arg0: Post) => void; } ) {
+export default async function handle(req, res ) {
     const postId = req.query.id;
     if ( req.method === 'DELETE') {
         const post = await prisma.post.delete({
