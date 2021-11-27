@@ -7,7 +7,7 @@ import prisma from "../../lib/prisma";
 import Router from "next/router";
 import { useSession } from "next-auth/client";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export async function getServerSideProps ( params:any )  {
     const post = await prisma.post.findUnique({
         where: {
             id: Number(params?.id) || -1,
