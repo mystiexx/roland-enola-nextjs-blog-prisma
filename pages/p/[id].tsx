@@ -1,4 +1,5 @@
 import React from "react";
+import { GetServerSideProps } from "next";
 import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import { PostProps } from "../../components/Post";
@@ -6,7 +7,7 @@ import prisma from "../../lib/prisma";
 import Router from "next/router";
 import { useSession } from "next-auth/client";
 
-export async function getServerSideProps ( params:any )  {
+export const getServerSideProps:GetServerSideProps = async ({ params }) => {
     const post = await prisma.post.findUnique({
         where: {
             id: Number(params?.id) || -1,
